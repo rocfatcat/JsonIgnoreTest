@@ -1,8 +1,8 @@
-# ASP.Net Core 3.1 Partial Class With ModelMetadataType WebApi Example
+# ASP.Net Core 3.1 Partial Class With MetadataType WebApi Example
 
-Use `System.Text.Json`
+Use `Newtonsoft.Json;`
 
-Test `System.Text.Json.Serialization.JsonIgnoreAttribute` in ModelMetadataType
+Test `Newtonsoft.Json.JsonIgnoreAttribute` in MetadataType
 
 ## Test Enpoint Url
 
@@ -10,9 +10,20 @@ Test `System.Text.Json.Serialization.JsonIgnoreAttribute` in ModelMetadataType
 
 ## Test Result
 
-Throw Excertion Message
+Success return data
 
-> System.Text.Json.JsonException: A possible object cycle was detected which is not supported. This can either be due to a cycle or if the object depth is larger than the maximum allowed depth of 32.
+```json
+[
+    {
+        "departmentId": 1,
+        "name": "MIS",
+        "budget": 1000.0,
+        "startDate": "2019-12-15T15:11:40.9639822+08:00",
+        "instructorId": 1,
+        "rowVersion": null
+    }
+]
+```
 
 ### Domain Class
 
@@ -39,14 +50,14 @@ Throw Excertion Message
 ### Partial Class
 
 ```csharp
-using System.Text.Json.Serialization;
-using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 ```
 
 ...
 
 ```csharp
-    [ModelMetadataType(typeof(DepartmentModelMetadataType))]
+    [MetadataType(typeof(DepartmentModelMetadataType))]
     public partial class Department
     {
         ...

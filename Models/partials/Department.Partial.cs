@@ -1,11 +1,11 @@
 
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
-using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
 namespace AspNetCore3.Models
 {
-    [ModelMetadataType(typeof(DepartmentModelMetadataType))]
+    [MetadataType(typeof(DepartmentModelMetadataType))]
     public partial class Department
     {
         
